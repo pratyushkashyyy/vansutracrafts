@@ -1,0 +1,356 @@
+.admin-page {
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+.admin-header {
+    margin-bottom: 40px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.admin-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1px;
+}
+
+.admin-tabs button {
+    padding: 12px 25px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.2s;
+}
+
+.admin-tabs button:hover {
+    background: #eee;
+}
+
+.admin-tabs button.active {
+    background: #fff;
+    color: #222;
+    border-top: 2px solid #555;
+    position: relative;
+    top: 1px;
+}
+
+.admin-section {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-group-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+.form-item label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.toggle-label input {
+    width: auto !important;
+}
+
+.form-item input,
+.form-item textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.image-preview-area {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    background: #fcfcfc;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+}
+
+.current-thumb {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.current-thumb.tall {
+    height: 60px;
+}
+
+/* List Manager (Categories/Prices) */
+.list-manager {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.list-item {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 20px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.list-item-image {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.list-item-image img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.list-item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.list-item-content label {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #888;
+    text-transform: uppercase;
+}
+
+/* Catalogue Specific */
+.add-new-form {
+    background: #fdfaf8;
+    padding: 30px;
+    border: 1px solid #f1ece9;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.add-new-form h4 {
+    margin-bottom: 20px;
+}
+
+.admin-divider {
+    margin: 40px 0;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.btn-delete {
+    background: #fff;
+    color: #d9534f;
+    border: 1px solid #d9534f;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    align-self: flex-start;
+    margin-top: 10px;
+    transition: all 0.2s;
+}
+
+.btn-delete:hover {
+    background: #d9534f;
+    color: #fff;
+}
+
+.btn-save {
+    background: #222;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-save:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-save:active {
+    transform: translateY(0);
+}
+
+.admin-section-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Tab Badge */
+.tab-badge {
+    background: #d9534f;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* Enquiries Table */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-table th {
+    background: #f8f9fa;
+    color: #666;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.admin-table .bold {
+    font-weight: 600;
+    color: #222;
+}
+
+.admin-table .subtext {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.admin-table .type-pill {
+    background: #e9ecef;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #495057;
+}
+
+.status-pill {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.status-pill.new {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.status-pill.served {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.admin-actions-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btn-serve {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-serve:hover {
+    background: #218838;
+}
+
+.admin-table .message-cell {
+    max-width: 300px;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+.empty-state {
+    padding: 100px 20px;
+    text-align: center;
+    color: #888;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+    margin-top: 20px;
+}

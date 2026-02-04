@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Configuration {
+  id      String @id @default("site-config")
+  content Json
+}
+
+model Enquiry {
+  id           Int      @id @default(autoincrement())
+  businessName String
+  email        String
+  phone        String
+  businessType String
+  message      String
+  status       String   @default("New")
+  date         String
+  createdAt    DateTime @default(now())
+}

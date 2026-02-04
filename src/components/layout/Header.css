@@ -1,0 +1,130 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-bg-primary);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.promo-bar {
+    background-color: var(--color-text-primary);
+    color: var(--color-text-white);
+    text-align: center;
+    padding: 8px 0;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+    padding: 0 var(--spacing-sm);
+}
+
+.logo a {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: lowercase;
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.nav-menu a {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+}
+
+.nav-menu a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.nav-menu a.highlight {
+    color: var(--color-accent);
+}
+
+.header-icons {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    stroke-width: 1.5;
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background-color: var(--color-accent);
+    color: white;
+    font-size: 0.6rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    .main-header {
+        height: 60px;
+        /* Slimmer header on mobile */
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: white;
+        padding: 100px var(--spacing-md) var(--spacing-md);
+        transform: translateX(-100%);
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        z-index: 99;
+    }
+
+    .nav-menu.open {
+        transform: translateX(0);
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .nav-menu a {
+        font-size: 1.2rem;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        z-index: 101;
+    }
+}
