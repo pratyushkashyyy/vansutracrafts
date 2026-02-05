@@ -1,0 +1,41 @@
+name: Deploy VansutraExports
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e
+            export PATH=/usr/bin:/usr/local/bin:$PATH
+
+            echo "📁 Move to project directory"
+            cd /home/pk/vansutracrafts
+
+            echo "🔄 Pull latest code"
+            git pull origin main
+
+            echo "📦 Install & build React (Vite)"
+            npm install
+            npm run build
+
+            echo "♻️ Restart backend (PM2)"
+            cd server
+            npm install
+            pm2 reload vansutra-api
+
+            echo "🚀 Deployment completed successfully"

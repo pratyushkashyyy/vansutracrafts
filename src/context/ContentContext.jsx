@@ -12,7 +12,7 @@ import prodCake from '../assets/prod_cake.png';
 import prodFrames from '../assets/prod_frames.png';
 import prodChair from '../assets/prod_chair.png';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = '/api';
 const ContentContext = createContext();
 
 export const useContent = () => useContext(ContentContext);
