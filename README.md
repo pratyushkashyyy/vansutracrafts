@@ -1,16 +1,90 @@
-# React + Vite
+# Vansutracrafts - B2B Handmade E-commerce
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A B2B e-commerce platform for authentic Indian handicrafts, built with modern web technologies.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend**: React, Vite
+- **Backend API**: Node.js, Express
+- **Database**: SQLite (with Prisma ORM)
+- **Styling**: CSS Modules / Standard CSS
+- **Proxy**: Nginx (Production), Vite Proxy (Development)
 
-## React Compiler
+## Getting Started (Local Development)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Follow these steps to run the project locally.
 
-## Expanding the ESLint configuration
+### 1. Install Dependencies
+```bash
+npm install
+cd server && npm install && cd ..
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 2. Setup Database
+Initialize the SQLite database with Prisma:
+```bash
+npm run server:setup
+# Or manually:
+# npx prisma generate --schema=server/prisma/schema.prisma
+# npx prisma db push --schema=server/prisma/schema.prisma
+```
+*(Note: Ensure `server/.env` has `DATABASE_URL="file:./dev.db"`)*
+
+### 3. Start Development Servers
+You need to run both the backend and frontend.
+
+**Backend (Port 5000):**
+```bash
+npm run server
+```
+
+**Frontend (Port 5173):**
+```bash
+npm run dev
+```
+
+Visit `http://localhost:5173` to view the app.
+
+---
+
+## Production Setup
+
+For production deployment (e.g., on a VPS), we use **Vite build** for the frontend, **PM2** for the backend process, and **Nginx** as a reverse proxy.
+
+### 1. Build Frontend
+```bash
+npm run build
+```
+This serves the application to the `dist/` folder.
+
+### 2. Configure Backend (PM2)
+Use PM2 to keep the API server running.
+```bash
+npm install -g pm2
+pm2 start index.js --name vansutra-api --cwd ./server
+pm2 save
+pm2 startup
+```
+
+### 3. Configure Nginx
+Use Nginx to serve the static files and proxy API requests.
+
+1.  Copy the example config:
+    ```bash
+    sudo cp nginx.conf.example /etc/nginx/sites-available/vansutracrafts
+    ```
+2.  Edit the config to set your domain:
+    ```bash
+    sudo nano /etc/nginx/sites-available/vansutracrafts
+    ```
+3.  Enable the site:
+    ```bash
+    sudo ln -sf /etc/nginx/sites-available/vansutracrafts /etc/nginx/sites-enabled/
+    ```
+4.  Test and Reload:
+    ```bash
+    sudo nginx -t
+    sudo systemctl reload nginx
+    ```
+
+For more detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
